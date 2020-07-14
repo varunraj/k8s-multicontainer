@@ -1,16 +1,16 @@
-docker build -t varunraj/multi-client:latest -t varunraj/multi-client:$SHA -f ./client/Dockerfile ./client
-docker build -t varunraj/multi-server:latest -t varunraj/multi-server:$SHA -f ./server/Dockerfile ./server
-docker build -t varunraj/multi-worker:latest -t varunraj/multi-worker:$SHA -f ./worker/Dockerfile ./worker
+docker build -t varunrajdocker/multi-client:latest -t varunrajdocker/multi-client:$SHA -f ./client/Dockerfile ./client
+docker build -t varunrajdocker/multi-server:latest -t varunrajdocker/multi-server:$SHA -f ./server/Dockerfile ./server
+docker build -t varunrajdocker/multi-worker:latest -t varunrajdocker/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 
-docker push varunraj/multi-client:latest
-docker push varunraj/multi-server:latest
-docker push varunraj/multi-worker:latest
+docker push varunrajdocker/multi-client:latest
+docker push varunrajdocker/multi-server:latest
+docker push varunrajdocker/multi-worker:latest
 
-docker push varunraj/multi-client:$SHA
-docker push varunraj/multi-server:$SHA
-docker push varunraj/multi-worker:$SHA
+docker push varunrajdocker/multi-client:$SHA
+docker push varunrajdocker/multi-server:$SHA
+docker push varunrajdocker/multi-worker:$SHA
 
 kubectl apply -f k8s
-kubectl set image deployments/server-deployment server=varunraj/multi-server:$SHA
-kubectl set image deployments/client-deployment client=varunraj/multi-client:$SHA
-kubectl set image deployments/worker-deployment worker=varunraj/multi-worker:$SHA
+kubectl set image deployments/server-deployment server=varunrajdocker/multi-server:$SHA
+kubectl set image deployments/client-deployment client=varunrajdocker/multi-client:$SHA
+kubectl set image deployments/worker-deployment worker=varunrajdocker/multi-worker:$SHA
